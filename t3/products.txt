@@ -1,0 +1,18 @@
+[{
+    "title": "Sudadera con gorro Relaxed Fit",
+    "price":35.99,
+    "thumbnail": "https://lp2.hm.com/hmgoepprod?set=source[/45/d8/45d88df604a2264d8f8e0da8d8586a1d0952f1b5.jpg],origin[dam],category[men_hoodiessweatshirts_hoodies],type[DESCRIPTIVESTILLLIFE],res[w],hmver[2]&call=url[file:/product/main]",
+    "id":0
+},
+{
+    "title": "Sudadera Relaxed Fit con diseño",
+    "price":32.99,
+    "thumbnail": "https://lp2.hm.com/hmgoepprod?set=source[/56/ba/56ba07a10f457116abad6d4fa36d765e2b53cb00.jpg],origin[dam],category[],type[DESCRIPTIVESTILLLIFE],res[w],hmver[2]&call=url[file:/product/main]",
+    "id":1
+},
+{
+    "title": "Sudadera con gorro Relaxed Fit",
+    "price":42.99,
+    "thumbnail": "https://lp2.hm.com/hmgoepprod?set=source[/ff/ed/ffedb0c45c69bf0463ce843c84a2411c34dca918.jpg],origin[dam],category[],type[DESCRIPTIVESTILLLIFE],res[w],hmver[2]&call=url[file:/product/main]",
+    "id":2
+}]
