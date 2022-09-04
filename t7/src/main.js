@@ -1,14 +1,13 @@
-const express = require('express')
+import express from 'express'
+import { Server as HttpServer} from 'http'
+import { Server as Socket} from 'socket.io'
+
+import knexContainer from '../Contenedores/knexContainer.js'
+import { knexMysql,knexSqlite } from '../options.js'
 
 
-const { Server: HttpServer } = require('http')
-const { Server: Socket } = require('socket.io')
-
-const ContenedorMemoria = require('../contenedores/ContenedorMemoria.js')
-const ContenedorArchivo = require('../contenedores/ContenedorArchivo.js')
-
-const contenedorProductos = new ContenedorMemoria()
-const contenedorMensajes=new ContenedorArchivo('mensajes.txt')
+const contenedorProductos = new knexContainer(knexMysql,'productos')
+const contenedorMensajes=new knexContainer(knexSqlite,'mensajes')
 
 //--------------------------------------------
 // instancio servidor, socket y api
@@ -24,12 +23,12 @@ io.on('connection', async socket => {
     console.log('new client detected')
     let mensajes=await contenedorMensajes.listarAll()
 
-    socket.emit('products',contenedorProductos.listarAll())
+    socket.emit('products',await contenedorProductos.listarAll())
     socket.emit('mensajes',mensajes)
 
-    socket.on('new-product',producto=>{
-        contenedorProductos.guardar(producto)
-        io.sockets.emit('products',contenedorProductos.listarAll())
+    socket.on('new-product',async producto=>{
+        await contenedorProductos.guardar(producto)
+        io.sockets.emit('products',await contenedorProductos.listarAll())
     })
     socket.on('new-msg',async msg=>{
         await contenedorMensajes.guardar(msg)

@@ -1,0 +1,23 @@
+h1 {
+    color: blue;
+}
+
+label {
+    font-weight: bold;
+    font-style: italic;
+}
+
+.jumbotron {
+    min-height: 100vh;
+}
+.greeny-msg{
+    color: green;
+    font-style: italic;
+}
+.user-msg{
+    color: blue;
+    font-weight: 600;
+}
+.date-msg{
+    color: brown;
+}
