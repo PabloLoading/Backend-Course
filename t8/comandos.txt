@@ -1,0 +1,122 @@
+use ecommerce
+db.mensajes.insertMany([{ 
+    user: "Pablo",
+    text: "hola pa",
+    date:"18/8/2022, 19:34:33", 
+},{ 
+    user: "Diego",
+    text: "hola pablito",
+    date:"18/8/2022, 19:34:33", 
+},{ 
+    user: "Pablo",
+    text: "que haces diego",
+    date:"18/8/2022, 19:34:33", 
+},{ 
+    user: "Diego",
+    text: "aca programando",
+    date:"18/8/2022, 19:34:33", 
+},{ 
+    user: "Pablo",
+    text: "bien, que andas programando",
+    date:"18/8/2022, 19:34:33", 
+},{ 
+    user: "Diego",
+    text: "estoy tocando un poco bases de datos",
+    date:"18/8/2022, 19:34:33", 
+},{ 
+    user: "Diego",
+    text: "esto es mongo",
+    date:"18/8/2022, 19:34:33", 
+},{ 
+    user: "Pablo",
+    text: "uff no es facil",
+    date:"18/8/2022, 19:34:33", 
+},{ 
+    user: "Pablo",
+    text: "suerte con eso, voy a seguir aprendiendo css :c",
+    date:"18/8/2022, 19:34:33", 
+},{ 
+    user: "Diego",
+    text: "dale nos vemos pablo",
+    date:"18/8/2022, 19:34:33", 
+},])
+
+db.mensajes.find()
+db.mensajes.countDocuments()
+
+
+db.productos.insertMany([{
+    nombre:'Caja de lapices',
+    precio: 800,
+    foto: 'https://www.amazon.com/-/es/Mr-Pen-sacapuntas-suministros-escolares/dp/B07LFRC469'
+},{
+    nombre:'Cartuchera',
+    precio: 2000,
+    foto: 'https://www.acerix.com.uy/catalogo/deportes-recreacion/mochilas-y-bolsos/cartuchera-zenit-escolar-liceal-verde-limon-5555555555555558832/'
+},{
+    nombre:'Taza',
+    precio: 1000,
+    foto: 'https://shop.bestsublimation24.eu/product-spa-40-Taza-magica-A-330-ml-sublimacion-verde-transferencia-termica.html'
+},{
+    nombre:'Microfono para Pc',
+    precio: 4500,
+    foto: 'https://http2.mlstatic.com/D_NQ_NP_949628-MLU44362484146_122020-O.jpg'
+},{
+    nombre:'Remera azul',
+    precio: 3000,
+    foto: 'https://media.istockphoto.com/photos/blue-tshirt-clipping-path-picture-id465485415?b=1&k=20&m=465485415&s=170667a&w=0&h=VaD_NRgo9mK3E3_4AmGMT9kpUUrSOdLCKVs8W07IU2A='
+},{
+    nombre:'Almohada',
+    precio: 5000,
+    foto: 'https://m.media-amazon.com/images/I/51vEHrvd-KS.jpg'
+},{
+    nombre:'Lampara',
+    precio: 5000,
+    foto: 'https://www.mayfieldlighting.com.au/wp-content/uploads/2022/04/1293_1.jpg'
+},{
+    nombre:'Auriculares i30 inalambricos',
+    precio: 3500,
+    foto: 'https://www.garciayolivero.com.ar/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/a/u/auriculares-inalambricos-airpods-apple-en-stock-garantia-d_nq_np_927445-mlu29450497118_022019-q.jpg'
+},{
+    nombre:'Soporte para celular',
+    precio: 4000,
+    foto: 'https://f.fcdn.app/imgs/2cba91/mispetates.com/mipeuy/4077/original/catalogo/9415.21-12-1/1920-1200/soporte-para-celular-ajustable-negro.jpg'
+},{
+    nombre:'Goma de borrar',
+    precio: 350,
+    foto: 'https://abcpapeleria.uy/web/wp-content/uploads/2022/02/243542816_464121358671504_385721411234799944_n.jpg'
+}])
+db.productos.find()
+db.productos.countDocuments()
+db.productos.insertOne({
+    nombre:'Parlante Jbl',
+    precio: '5000',
+    foto: 'https://http2.mlstatic.com/D_NQ_NP_2X_754237-MLA44715287415_012021-V.webp'
+})
+db.productos.find({"precio":{$lt:1000}})
+db.productos.find({$and:[{"precio":{$gte:1000}},{"precio":{$lte:3000}} ]})
+db.productos.find({"precio":{$gt:3000}})
+db.productos.find({},{nombre:1,_id:0}).sort({"precio":1}).limit(1).skip(2)
+db.productos.updateMany({},{$set: {stock:100}})
+db.productos.updateMany({precio:{$gt:4000}},{$set: {stock:0}})
+db.productos.deleteMany({precio:{$lt:1000}})
+
+show dbs
+use admin
+db.createUser({
+    user: 'pepe',
+    pwd: 'asd456',
+    roles: [
+        {role: 'read', db:'ecommerce'}
+    ]
+})
+
+mongosh.exe -u pepe -p asd456
+use ecommerce
+db.productos.insertOne({
+    nombre:'Celular nokia ',
+    precio: 4900,
+    foto: 'https://http2.mlstatic.com/D_NQ_NP_2X_754237-MLA44715287415_012021-V.webp'
+})
+db.productos.find()
+
