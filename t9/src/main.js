@@ -31,36 +31,6 @@ const contenedorMensajes=new ContenedorMongoDb('mensajes',{
 //--------------------------------------------
 // NORMALIZACIÓN DE MENSAJES
 
-
-const str=`[{
-    "_id":"63349d8295628e865ebe72bf",
-    "author":{
-        "email":"a@a.com",
-        "nombre":"a",
-        "apellido":"b",
-        "edad":14,
-        "alias":"pp",
-        "avatar":"avpp",
-        "_id":"63349d8295628e865ebe72c0"},
-    "text":"xdd","fyh":"28/9/2022, 16:16:18",
-    "__v":0},
-{
-    "_id":"63349d8a95628e865ebe72d8",
-    "author":{
-        "email":"a@a.com",
-        "nombre":"a",
-        "apellido":"b",
-        "edad":14,
-        "alias":"pp",
-        "avatar":"avpp",
-        "_id":"63349d8a95628e865ebe72d9"},
-    "text":"45fdg",
-    "fyh":"28/9/2022, 16:16:26",
-    "__v":0},
-{"_id":"63349d8c95628e865ebe72dd","author":{"email":"a@a.com","nombre":"a","apellido":"b","edad":14,"alias":"pp","avatar":"avpp","_id":"63349d8c95628e865ebe72de"},"text":"7fgh","fyh":"28/9/2022, 16:16:28","__v":0}]`
-const mensajesMock = JSON.parse(str)
-
-
 const authorSchemaa = new schema.Entity('authors',undefined,{idAttribute:'email'})
 
 const messageSchema = new schema.Entity('mensajes',{
@@ -70,8 +40,6 @@ const messageSchema = new schema.Entity('mensajes',{
 const postSchema = new schema.Entity('posts',{
     messages:[messageSchema]    
 })
-
-
 
     
 //--------------------------------------------
